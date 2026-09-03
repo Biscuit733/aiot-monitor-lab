@@ -8,7 +8,6 @@ const devices = ref<Device[]>([
     id: 1,
     title: 'Device 1',
     status: 'Online',
-    online: true,
     alarm: false,
     type: 'Machine',
   },
@@ -16,14 +15,14 @@ const devices = ref<Device[]>([
     id: 2,
     title: 'Device 2',
     status: 'Offline',
-    online: false,
     alarm: false,
     type: 'Machine',
   }
 ])
 
 // 2. 使用 computed 提取计算逻辑，利用其缓存特性提升性能
-const onlineCount = computed(() => devices.value.filter(device => device.online).length)
+const deviceCount = computed(() => devices.value.length)
+const onlineCount = computed(() => devices.value.filter(device => device.status === 'Online').length)
 const alarmCount = computed(() => devices.value.filter(device => device.alarm).length)
 </script>
 
@@ -47,6 +46,12 @@ const alarmCount = computed(() => devices.value.filter(device => device.alarm).l
         Devices
         <div class="online-num">
           <!-- 3. 模板更加整洁 -->
+          {{ deviceCount }}
+        </div>
+      </div>
+      <div class="online">
+        Online Devices
+        <div class="online-num">
           {{ onlineCount }}
         </div>
       </div>
@@ -105,7 +110,7 @@ const alarmCount = computed(() => devices.value.filter(device => device.alarm).l
 }
 
 /* 统一的毛玻璃卡片样式 */
-.system, .device, .alarm {
+.system, .device, .online, .alarm {
   background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;

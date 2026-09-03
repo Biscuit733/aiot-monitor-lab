@@ -21,7 +21,7 @@ docs/
 - 当前项目阶段为： 项目基础框架搭建完毕， 然后前端开始开发。
 
 ## Tech Stack
-- 前端：Vue3 + TypeScript + ElementPlus
-- 后端：Node.js + Express
-- 数据库：MongoDB
+- 前端：Vue3 + TypeScript 
+- 后端：FastAPI + Python 3.11
+- 数据库：SQLite -> MySQL
 - 部署：Docker + Nginx
